@@ -1,13 +1,10 @@
 <template>
-  Employees List
+  <p>Employees List</p>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from "vue";
+export default defineComponent({
     name:"EmployeeListPresentation"
-}
+})
 </script>
-
-<style>
-
-</style>
