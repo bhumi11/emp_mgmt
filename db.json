@@ -1,0 +1,7 @@
+{
+    "employees": [
+      { "id": 1, "firstName": "Bhumi", "lastName": "Desai", "gender": "female" , "technology": "Vue", "salary": "1000" },
+      { "id": 2, "firstName": "Akshita", "lastName": "Kapadia", "gender": "female" , "technology": "Vue", "salary": "1000" },
+      { "id": 3, "firstName": "Binal", "lastName": "Lad", "gender": "female" , "technology": "Vue", "salary": "1000" }
+    ]
+  }
