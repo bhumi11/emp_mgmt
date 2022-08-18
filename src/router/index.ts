@@ -1,11 +1,28 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
-import Home from "../views/Home.vue";
 import Employees from "../employees/components/employees-list-container/employees-list.container.vue";
+import EmployeesForm from "../employees/components/employees-form-container/employees-form.container.vue";
+
+// import EmployeeFormRoutes from "../employees/router";
+
 const routes: any = [
   {
     path: "/",
-    name: "default",
-    component: Employees
+    redirect:'/employees'
+  },
+  {
+    path: "/employees",
+    name: "EmployeeListContainer",
+    component: Employees,
+  },
+  {
+    path: "/employees/add",
+    name: "AddEmployeeFormContainer",
+    component: EmployeesForm
+  },
+  {
+    path: "/employees/:id",
+    name: "EditEmployeeFormContainer",
+    component: EmployeesForm
   },
 ];
 // const routes: Array<RouteRecordRaw> = [
