@@ -1,7 +1,7 @@
 const PageTitle = {
     methods: {
         setPageTitle(title: string) {
-            document.title = title + ' | Product Configurator';
+            document.title = title + ' | Employee Management';
         }
     }
 }
