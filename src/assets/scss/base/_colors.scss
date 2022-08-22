@@ -1,0 +1,12 @@
+// Notification Colors
+$success: #28ad7a;
+$info: #00a0df;
+$warning: #ffab58;
+$danger: #f14d4d;
+
+$notification-colors: (
+  "success": $success,
+  "info": $info,
+  "warning": $warning,
+  "error": $danger,
+);

@@ -25,7 +25,7 @@ export default defineComponent({
     },
     mixins: [PageTitle, CommonMixin, DateFormat, Mask],
     created() {
-    this.setPageTitle("List"); //Set Page Title
+    this.setPageTitle("Employees"); //Set Page Title
     // store.dispatch(Shared.SET_TITLE, Topbar.title);
 
     this.loadMore();
@@ -55,8 +55,9 @@ export default defineComponent({
       EmployeesService.getAllEmployees().then(
         (res: any) => {
           res.forEach((emp:any) => {
-            emp.salary = this.maskNumericIntoSeperator(emp.salary);
-            emp.dob = this.setDate(emp.dob)
+            emp.gender=emp.gender==1 ? 'Male' : 'Female'
+            emp.salary = this.maskNumericIntoSeperator(emp.salary.toString());
+            emp.joiningDate = this.setDate(emp.joiningDate)
           });
           this.employees = res;
         }

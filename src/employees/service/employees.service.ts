@@ -27,6 +27,24 @@ class Employee {
     //   return EmployeeAdapter.toResponse(response.data.result);
     });
   }
+
+  addEmployee(formData:any) {
+    return Http.post(`employees`,formData).then((response:any) => {
+      return response.data;
+    });
+  }
+
+  getEmployeeById(empId:any) {
+    return Http.get(`employees/${empId}`).then((response:any) => {
+      return response.data;
+    });
+  }
+
+  updateEmployeeDetail(formData:any,empId:any) {
+    return Http.put(`employees/${empId}`,formData).then((response:any) => {
+      return response.data;
+    });
+  }
 }
 
 export const EmployeesService = new Employee();

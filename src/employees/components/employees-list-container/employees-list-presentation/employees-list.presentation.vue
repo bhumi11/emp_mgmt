@@ -12,7 +12,7 @@
           <th>Gender</th>
           <th>Technology</th>
           <th>Salary</th>
-          <th>DOB</th>
+          <th>Joing Date</th>
         </tr>
       </thead>
       <tbody>
@@ -21,10 +21,10 @@
           <td>{{ employee.gender }}</td>
           <td>{{ employee.technology }}</td>
           <td>{{ employee.salary }}</td>
-          <td>{{ employee.dob }}</td>
+          <td>{{ employee.joiningDate }}</td>
           <td style="white-space: nowrap">
-            <a routerLink="edit/{{employee.id}}" class="btn btn-sm btn-primary mr-1"
-              >Edit</a
+            <button @click="editEmployee(employee.id)" class="btn btn-sm btn-primary mr-1"
+              >Edit</button
             >
             <button class="btn btn-sm btn-danger btn-delete-employee" @click="deleteEmployee(employee.id)">
             <!-- [disabled]="employee.isDeleting" -->
@@ -38,7 +38,7 @@
           </td>
         </tr>
         <tr v-if="employees.length==0">
-          <td colspan="4" class="text-center">
+          <td colspan="6" class="text-center">
             <!-- <span class="spinner-border spinner-border-lg align-center"></span> -->
             <p>No records added</p>
           </td>
@@ -92,8 +92,13 @@ export default defineComponent({
   methods:{
     deleteEmployee(id:any){
       this.$emit("deleteEmployee",id)
+    },
+    editEmployee(empId:any){
+      this.$router.push({
+            name: "EditEmployeeFormContainer",
+            params: { id: empId },
+          });
     }
   }
 });
 </script>
-

@@ -1,54 +1,138 @@
 <template>
+{{employee}}
   <div class="submit-form">
-    <div v-if="!submitted">
       <div class="form-group">
-        <label for="name">Employee Name</label>
+        <label for="firstName">First Name</label>
         <input
           type="text"
           class="form-control"
-          id="name"
-          required
-          v-model="employee.name"
-          name="name"
+          id="firstName"
+          v-model="employee.firstName"
+          name="firstName"
         />
       </div>
 
-      <div>Selected: {{ employee.selected }}</div>
       <div class="form-group">
-        <select v-model="employee.selected">
-          <option disabled value="">Please select one</option>
-          <option>A</option>
-          <option>B</option>
-          <option>C</option>
+        <label for="lastName">Last Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="lastName"
+          v-model="employee.lastName"
+          name="lastName"
+        />
+      </div>
+
+      <div class="form-group">
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="exampleRadios"
+            id="exampleRadios1"
+            :value="1"
+            v-model="employee.gender"
+            checked
+          />
+          <label class="form-check-label" for="exampleRadios1">
+            Male
+          </label>
+        </div>
+        
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="exampleRadios"
+            id="exampleRadios2"
+            :value="2"
+            v-model="employee.gender"
+          />
+          <label class="form-check-label" for="exampleRadios2">
+            Female
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleFormControlSelect1">Select Technology</label>
+        <select class="form-control" id="exampleFormControlSelect1"
+        v-model="employee.technology">
+          <option v-for="option in technologyArr" :key="option" :value="option">{{option}}</option>
         </select>
       </div>
 
-      <button @click="saveTutorial" class="btn btn-success">Submit</button>
-    </div>
+      <div class="form-group">
+        <label for="salary">Salary</label>
+        <input
+          type="text"
+          class="form-control"
+          id="salary"
+          v-model="employee.salary"
+          @keypress="handleSalaryInput($event)"
+          @keyup.delete="handleSalaryInput($event)"
+          name="salary"
+        />
+      </div>
 
-    <div v-else>
-      <h4>You submitted successfully!</h4>
-      <button class="btn btn-success" @click="newTutorial">Add</button>
-    </div>
+      <div class="form-group">
+        <label for="joingDate">Joining Date:</label>
+        <input v-model="employee.joiningDate" 
+        class="form-control" type="date" id="joingDate" name="joingDate">
+      </div>
+
+      <button @click="saveEmployee" class="btn btn-success">Submit</button>
   </div>
 </template>
 
 <script>
+import Mask from "@/mixins/mask";
+import DateFormat from "@/mixins/date-format";
+
 export default {
-    name:"EmployeeFormPresentation",
-    data() {
+  name: "EmployeeFormPresentation",
+  data() {
     return {
       employee: {
-        name: "",
-        selected:false
+        firstName: "",
+        lastName:"",
+        gender:1,
+        salary:"",
+        technology: "",
+        joiningDate:""
       },
-      // submitted: false
+      technologyArr:['.NET','JAVA','Python','Angular','Vue']
     };
   },
-  mounted(){
-    debugger
+  mixins: [Mask,DateFormat],
+  props:{
+    employeeData:{
+      type:Array
+    }
+  },
+  watch:{
+    employeeData(newValue){
+      this.employee=JSON.parse(JSON.stringify(newValue));
+      this.employee.salary = this.maskNumericIntoSeperator(this.employee.salary.toString())
+      this.employee.joiningDate = this.setDate(this.employee.joiningDate)
+    }
+  },
+  emits: [
+    "addEmployee"
+  ],
+  methods:{
+    saveEmployee(){
+      console.log(this.employee,"emp");
+      this.$emit("addEmployee",this.employee)
+    },
+    handleSalaryInput(event) {
+        this.employee.salary = this.maskThousandSeperatorForThousandPosition(
+          event,
+          this.employee.salary
+        );
+    },
   }
-}
+};
 </script>
 
 <style>

@@ -1,0 +1,76 @@
+// Toast Notification
+$vt-color-info: lighten($info, 5%);
+$vt-text-color-info: color-yiq($info);
+$vt-color-success: lighten($success, 5%);
+$vt-text-color-success: color-yiq($success);
+$vt-color-warning: lighten($warning, 5%);
+$vt-text-color-warning: color-yiq($warning);
+$vt-color-error: lighten($danger, 5%);
+$vt-text-color-error: color-yiq($danger);
+
+// $vt-font-family: $font-family;
+$vt-z-index: 99999;
+
+$vt-toast-max-width: 430px;
+$vt-toast-body-max-height: 240px;
+
+$vt-toast-min-height: auto;
+
+@import "~vue-toastification/src/scss/index.scss";
+
+// Override the Toaster style
+.#{$vt-namespace} {
+  &__toast {
+    padding: 1em 1em;
+    border-radius: $border-radius;
+    align-items: flex-start;
+    &-body,
+    &-component-body {
+      font-size: $font-size-base;
+      // font-weight: $font-weight-medium;
+      max-height: $vt-toast-body-max-height;
+      overflow: auto;
+      padding-top: 2px;
+      word-break: break-word;
+
+      ul {
+        list-style: none;
+
+        li {
+          &:not(:first-child) {
+            padding-top: 5px;
+          }
+          &:not(:last-child) {
+            padding-bottom: 5px;
+            border-bottom: 1px solid $border-color;
+          }
+        }
+      }
+    }
+
+    // Update Scrollbar color to relative toaster color
+    @each $color, $value in $notification-colors {
+      &--#{$color} {
+        .#{$vt-namespace}__toast-body,
+        .#{$vt-namespace}__toast-component-body {
+          ul {
+            li {
+              border-color: lighten($value, 15%);
+            }
+          }
+
+          &::-webkit-scrollbar-thumb {
+            background: lighten(color-contrast($value), 20%);
+          }
+        }
+      }
+    }
+  }
+  &__close-button {
+    color: inherit;
+    margin-top: 1px;
+  }
+  &__icon {
+    margin: 3px 12px 3px 0px;
+  }
+}
