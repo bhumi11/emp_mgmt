@@ -64,15 +64,15 @@ export default defineComponent({
       );
     },
     onDelete(id:any){
-      const index = this.employees.findIndex((employee:any) => employee.id === id);
-      this.employees.splice(index, 1);
-      this.toast.success("Record deleted successfully");
-      // EmployeesService.deleteEmployee(id).then(
-      //   (res: any) => {
-      //     this.toast.success("Record deleted successfully");
-      //     store.dispatch(Shared.DISPATCH.SET_GET_ALL, true);
-      //   }
-      // );
+      // const index = this.employees.findIndex((employee:any) => employee.id === id);
+      // this.employees.splice(index, 1);
+      // this.toast.success("Record deleted successfully");
+      EmployeesService.deleteEmployee(id).then(
+        (res: any) => {
+          this.toast.success("Record deleted successfully");
+          store.dispatch("setGetAll", true);
+        }
+      );
     }
   }
 })

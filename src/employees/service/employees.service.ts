@@ -14,7 +14,7 @@ class Employee {
    * @param id Loss code Book record id
    */
    deleteEmployee(id: string): Promise<any> {
-    return Http.delete(`${id}`);
+    return Http.delete(`employees/${id}`);
   }
   /**
    * Gets all Loss code book
