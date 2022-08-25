@@ -1,6 +1,8 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+
+    <!--conditionally added class-->
+    <h1 class="background-color" :class="true ? 'color1' : 'color2'">Welcome</h1>
     <p>
       For a guide and recipes on how to configure / customize this project,<br />
       check out the
@@ -138,5 +140,17 @@ li {
 }
 a {
   color: #42b983;
+}
+
+.color1 {
+  color: azure;
+}
+
+.color2 {
+  color: black;
+}
+
+.background-color{
+  background-color:cadetblue;
 }
 </style>

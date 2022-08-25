@@ -28,14 +28,6 @@ export default {
     // Make it available inside methods
     return { toast };
   },
-  mounted() {
-    console.log(this.$route.params.id);
-    // if (!this.$route.params.id) {
-    //   // store.dispatch("addMode", true);
-    // } else {
-    //   // store.dispatch("addMode", false);
-    // }
-  },
   computed:{
     employeeId() {
       return this.$route.params.id;
@@ -57,7 +49,6 @@ export default {
                 : detail.salary
                 ? Number(detail.salary)
                 : null;
-      detail.joiningDate=new Date(detail.joiningDate)
 
       if(this.employeeId){
         EmployeesService.updateEmployeeDetail(detail,this.employeeId).then(() => {

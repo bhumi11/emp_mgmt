@@ -57,22 +57,22 @@ export default defineComponent({
           res.forEach((emp:any) => {
             emp.gender=emp.gender==1 ? 'Male' : 'Female'
             emp.salary = this.maskNumericIntoSeperator(emp.salary.toString());
-            emp.joiningDate = this.setDate(emp.joiningDate)
+            // emp.joiningDate = this.setDate(emp.joiningDate)
           });
           this.employees = res;
         }
       );
     },
     onDelete(id:any){
-      // const index = this.employees.findIndex((employee:any) => employee.id === id);
-      // this.employees.splice(index, 1);
-      // this.toast.success("Record deleted successfully");
-      EmployeesService.deleteEmployee(id).then(
-        (res: any) => {
-          this.toast.success("Record deleted successfully");
-          store.dispatch("setGetAll", true);
-        }
-      );
+      const index = this.employees.findIndex((employee:any) => employee.id === id);
+      this.employees.splice(index, 1);
+      this.toast.success("Record deleted successfully");
+      // EmployeesService.deleteEmployee(id).then(
+      //   (res: any) => {
+      //     this.toast.success("Record deleted successfully");
+      //     store.dispatch(Shared.DISPATCH.SET_GET_ALL, true);
+      //   }
+      // );
     }
   }
 })

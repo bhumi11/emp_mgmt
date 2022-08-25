@@ -3,8 +3,30 @@
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>
   </div> -->
+  <!--nexttick example-->
+  <!-- <nexttick-example></nexttick-example> -->
+
+  <!--dynamic component example-->
+  <!-- <tabs></tabs> -->
+  
+  <!--class add conditionally-->
+  <!-- <hello-world/> -->
   <router-view />
 </template>
+<script>
+import { defineComponent } from 'vue'
+// import nexttickExample from '@/components/nexttickExample.vue'
+// import tabs from '@/components/dynamic-component/tabs.vue'
+// import HelloWorld from '@/components/HelloWorld.vue'
+
+export default defineComponent({
+  components:{
+    // nexttickExample
+    // tabs
+    // HelloWorld
+  }
+})
+</script>
 
 <style lang="scss">
 #app {

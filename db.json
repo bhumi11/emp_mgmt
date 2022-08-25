@@ -1,73 +1,13 @@
 {
   "employees": [
     {
-      "id": 1,
-      "firstName": "Bhumi",
-      "lastName": "Desai",
-      "gender": 2,
-      "technology": "JAVA",
-      "salary": "1000",
-      "joiningDate": "Fri Aug 19 2022 14:35:41 GMT+0530 (India Standard Time)"
-    },
-    {
-      "id": 2,
-      "firstName": "Akshita",
-      "lastName": "Kapadia",
-      "gender": 2,
-      "technology": "Vue",
-      "salary": "1000",
-      "joiningDate": "Fri Aug 19 2022 14:35:41 GMT+0530 (India Standard Time)"
-    },
-    {
-      "id": 3,
-      "firstName": "Binal",
+      "firstName": "Abc",
       "lastName": "Lad",
-      "gender": 2,
-      "technology": "Vue",
-      "salary": "1000",
-      "joiningDate": "Fri Aug 19 2022 14:35:41 GMT+0530 (India Standard Time)"
-    },
-    {
-      "fname": "John",
-      "lname": "Doe",
       "gender": 1,
-      "salary": "1000",
+      "salary": 1000,
       "technology": ".NET",
-      "id": 4
-    },
-    {
-      "firstName": "Abcddd",
-      "lastName": "Kapadia11",
-      "gender": 2,
-      "salary": "1000",
-      "technology": "JAVA",
-      "id": 5
-    },
-    {
-      "firstName": "Abc",
-      "lastName": "sss",
-      "gender": 2,
-      "salary": "1000",
-      "technology": "JAVA",
-      "id": 6
-    },
-    {
-      "firstName": "ruchi",
-      "lastName": "patel",
-      "gender": 2,
-      "salary": 100,
-      "technology": "JAVA",
-      "joiningDate": "2022-08-03T00:00:00.000Z",
-      "id": 7
-    },
-    {
-      "firstName": "Abc",
-      "lastName": "Lad",
-      "gender": 1,
-      "salary": 3332,
-      "technology": "JAVA",
-      "joiningDate": "2022-08-23T00:00:00.000Z",
-      "id": 8
+      "joiningDate": "2022-08-22",
+      "id": 1
     }
   ]
 }

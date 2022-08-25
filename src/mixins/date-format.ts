@@ -10,7 +10,7 @@ const DateFormat = {
                 dd = '0' + dd
             if (mm < 10)
                 mm = '0' + mm
-            return mm + '/' + dd + '/' + yyyy;
+            return yyyy + '-' + mm + '-' + dd;
         },
         setTime(date: string, showAmPm = true, showSeconds = true) {
             const today = new Date(date);

@@ -1,5 +1,7 @@
 <template>
 {{employee}}
+<!--to display ref value -->
+<!-- {{$refs.input.value}} -->
   <div class="submit-form">
       <div class="form-group">
         <label for="firstName">First Name</label>
@@ -9,6 +11,7 @@
           id="firstName"
           v-model="employee.firstName"
           name="firstName"
+          ref="input"
         />
       </div>
 
@@ -104,6 +107,9 @@ export default {
       technologyArr:['.NET','JAVA','Python','Angular','Vue']
     };
   },
+  mounted() {
+    this.$refs.input.focus()
+  },
   mixins: [Mask,DateFormat],
   props:{
     employeeData:{
@@ -114,7 +120,6 @@ export default {
     employeeData(newValue){
       this.employee=JSON.parse(JSON.stringify(newValue));
       this.employee.salary = this.maskNumericIntoSeperator(this.employee.salary.toString())
-      this.employee.joiningDate = this.setDate(this.employee.joiningDate)
     }
   },
   emits: [
